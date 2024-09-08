@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debit Page</title>
+    <style>
+        .debhead {
+            text-align: center;
+            color: rgba(22, 15, 122, 0.589);
+            font-size: 50px;
+            margin-top: 150px;
+        }
+        #deb {
+            display: block; /* Show initially */
+        }
+        .debdata {
+            padding-top: 100px;
+            background-color: rgba(22, 15, 122, 0.589);
+            width: 300px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .debdata button {
+            border-radius: 15px;
+            color: black;
+            border: 1px solid white;
+           
+            margin: 10px;
+            cursor: pointer;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="deb">
+        <div class="debhead">
+            Debit Amount
+        </div>
+        <div class="debdata">
+            <br>
+            <input type="number" id="debin" placeholder="Enter amount">
+            <button type="button" onclick="debamnt()">Debit Amount</button><br>
+            <button type="button" onclick="acc()">Check Balance</button>
+            <button type="button" onclick="cred()">Credit Amount</button>
+            <!-- <input type="number" id="debin" placeholder="Enter amount">
+            <button type="button" onclick="debamnt()">Debit Amount</button><br><br>
+            <button type="button" onclick="acc()">Check Balance</button>
+            <button type="button" onclick="cred()">Credit Amount</button> -->
+        </div>
+    </div>
+
+    <script>
+         while(true){
+        let pin=prompt("enter pin");
+        if (pin === null || pin === "") {
+            alert("PIN cannot be empty");
+            document.getElementById("deb").style.display = "none";
+           
+        } else if (pin !== "8899") {
+            alert("Invalid PIN");
+            document.getElementById("deb").style.display = "none";
+           
+        } else {
+            document.getElementById("deb").style.display = "block";
+            
+            break;
+        }
+    }
+        function debamnt() {
+            let pin = prompt("Enter PIN");
+            if (pin === "8899") {
+                let amount = parseFloat(document.getElementById("debin").value);
+                let balance = parseFloat(localStorage.getItem("balance")) || 300000;
+
+                if (isNaN(amount) || amount <= 0) {
+                    alert("Please enter a valid amount");
+                    return;
+                }
+
+                if (balance >= amount) {
+                    balance -= amount;
+                    localStorage.setItem("balance", balance);
+                    alert("Amount debited successfully. New balance: ₹" + balance.toFixed(2));
+                } else {
+                    alert("Insufficient balance");
+                }
+            } else {
+                alert("Invalid PIN");
+            }
+        }
+
+        function acc() {
+            location.href = "acc.html";
+        }
+
+        function cred() {
+            location.href = "cred.html";
+        }
+    </script>
+</body>
+</html>

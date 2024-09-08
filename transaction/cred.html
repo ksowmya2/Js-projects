@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit</title>
+    <style>
+        #cedid {
+            display: none;
+        }
+        .creddata {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .head {
+            text-align: center;
+            color: rgba(22, 15, 122, 0.589);
+            font-size: 70px;
+            margin-top: 150px;
+        }
+        .cdata {
+            padding-top: 100px;
+            background-color: rgba(22, 15, 122, 0.589);
+            width: 300px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .cdata button {
+            border-radius: 15px;
+            color: black;
+            border: 1px solid white;
+          
+            margin: 10px;
+            cursor: pointer;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="cedid">
+        <div class="head">
+            Credit Amount
+        </div>
+        <div class="creddata">
+            <div class="cdata">
+                <br>
+                <input type="number" id="amnt" placeholder="Enter amount">
+                <button type="button" onclick="sub()">Credit Amount</button><br>
+                <button type="button" onclick="acc()">Check Balance</button>
+                <button type="button" onclick="deb()">Debit Amount</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle PIN validation
+        function checkPIN() {
+            let pin;
+            do {
+                pin = prompt("Enter PIN");
+                if (pin === null || pin === "") {
+                    alert("PIN cannot be empty");
+                } else if (pin !== "8899") {
+                    alert("Invalid PIN");
+                }
+            } while (pin !== "8899");
+        }
+
+        // Call PIN check function
+        checkPIN();
+
+        // Show the credit section after PIN validation
+        document.getElementById("cedid").style.display = "block";
+
+        // Function to handle credit action
+        function sub() {
+            let amount = parseFloat(document.getElementById("amnt").value);
+            let balance = parseFloat(localStorage.getItem("balance")) || 300000;
+
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount");
+                return;
+            }
+
+            balance += amount;
+            localStorage.setItem("balance", balance);
+            alert("Amount credited successfully. New balance: ₹" + balance);
+        }
+
+        // Function to navigate to the account page
+        function acc() {
+            location.href = "acc.html";
+        }
+
+        // Function to navigate to the debit page
+        function deb() {
+            location.href = "debit.html";
+        }
+    </script>
+</body>
+</html>

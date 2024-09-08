@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .achead h1 {
+            color: rgba(22, 15, 122, 0.589);
+            font-size: 50px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .acdetails {
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            width: 50%;
+        }
+        .accdata {
+            padding: 30px 20px;
+            background-color: rgba(22, 15, 122, 0.589);
+            height: 300px;
+            color: white;
+            border-radius: 20px;
+            margin: 0 auto;
+            width: 80%;
+            box-sizing: border-box;
+        }
+        .accdata h2 {
+            margin: 10px 0;
+        }
+        .accbuttons {
+            margin-top: 20px;
+        }
+        .accbuttons button {
+            border-radius: 40px;
+            color: black;
+            border: 1px solid white;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+    </style>
+</head>
+<body> 
+    <div id="accdetails">
+    <div class="achead">
+        <h1>Account Details</h1>
+    </div>
+    <div class="acdetails">
+        <div class="accdata">
+            <h2>Account Holder Name: Kinthali Kruthi</h2>
+            <h2>Bank Name: SBI</h2>
+            <h2>Phone No: 9823054618</h2>
+            <h2>IFSC Code: SBIN0032694</h2>
+            <h2 id="balance">Account Balance: ₹<span id="balance-amount"></span></h2>
+            <div class="accbuttons">
+                <button type="button" onclick="home()">Home</button>
+                <button type="button" onclick="cred()">Credit Amount</button>
+                <button type="button" onclick="deb()">Debit Amount</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // while(true){
+        //     let pin=prompt("enter pin");
+        //     if(pin===null || pin===""){
+        //         alert("pin cannot be empty, please enter valid pin")
+
+        //     }
+        //     else if(pin!=="8899"){
+        //         alert("please enter valid pin")
+        //     }
+        //     else{
+
+        //     }
+        // }
+        while(true){
+        let pin=prompt("enter pin");
+        if (pin === null || pin === "") {
+            alert("PIN cannot be empty");
+            document.getElementById("accdetails").style.display = "none";
+           
+        } else if (pin !== "8899") {
+            alert("Invalid PIN");
+            document.getElementById("accdetails").style.display = "none";
+           
+        } else {
+            document.getElementById("accdetails").style.display = "block";
+            
+            break;
+        }
+    }
+        // Fetch and display the balance
+        function updateBalance() {
+            let balance = parseFloat(localStorage.getItem("balance")) || 300000;
+            document.getElementById("balance-amount").textContent = balance.toFixed(2);
+        }
+
+        // Initialize the page
+        updateBalance();
+
+        function home() {
+            location.href = "index.html";
+        }
+        function cred() {
+            location.href = "cred.html";
+        }
+        function deb() {
+            location.href = "debit.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+     .main{
+        display: flex;
+        gap: 20px;
+     }
+     .main{
+        margin-left: 10%;
+        margin-top: 18%;
+     }
+     #account,#credit,#debit {
+        background-color: rgba(22, 15, 122, 0.589);
+        width: 30%;
+        color: black;
+        height: 300px;
+        /* font-weight: 90px; */
+        font-size: 30px;
+        border-radius: 20px;
+     }
+     .data button{
+        background-color: antiquewhite;
+        border-radius: 15px;
+        font-size: 20px;
+        color: black;
+        font-weight: 35px;
+        border: 1px solid white;
+     }
+     /* .data button:hover{
+        font-size: 20px;
+     } */
+     .data{
+        text-align: center;
+        margin-top: 100px;
+     }
+     #main{
+        display: none;
+     }
+     body{
+        background-color: white;
+        /* background-image: linear-gradient(to bottom, white , blue); */
+        height: 510px;
+     }
+    </style>
+</head>
+<body>
+    <div>
+       
+        <div id="home" class="main">
+            <div id="account">
+                <div class="data">
+                Account Details<br><br>
+                <button type="button" onclick="acc()" >account details</button>
+            </div>
+            </div>
+            <div id="credit">
+                <div class="data">
+                Credit Details<br><br>
+                <button type="button" onclick="cred()" style="size: 15px;">credit amount</button>
+            </div>
+            </div>
+            <div id="debit">
+                <div class="data">
+                Debit Details<br><br>
+                <button type="button" onclick="deb()">Debit amount</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        while(true){
+        let pin=prompt("enter pin");
+        
+        if (pin === null || pin === "") {
+            alert("PIN cannot be empty");
+            document.getElementById("account").style.display = "none";
+            document.getElementById("credit").style.display = "none";
+            document.getElementById("debit").style.display = "none";
+        } else if (pin !== "8899") {
+            alert("Invalid PIN");
+            document.getElementById("account").style.display = "none";
+            document.getElementById("credit").style.display = "none";
+            document.getElementById("debit").style.display = "none";
+        } else {
+            document.getElementById("account").style.display = "block";
+            document.getElementById("credit").style.display = "block";
+            document.getElementById("debit").style.display = "block";
+            break;
+        }
+    }
+        function acc(){
+            // alert("");
+            location.href="acc.html";
+        }
+        function cred(){
+            // alert("");
+            location.href="cred.html";
+        }
+        function deb(){
+            // alert("");
+            location.href="debit.html";
+        }
+    </script>
+</body>
+</html>

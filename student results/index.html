@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+</head>
+<body>
+    <table >
+        <tr>
+            <th>Student Name</th>
+            <th>Maths Marks</th>
+            <th>English Marks</th>
+            <th>Hindi Marks</th>
+            <th>Submit</th>
+            <th>Total and Grade</th>
+            
+        </tr>
+        <tr>
+            <td><input type="text" id="s1"></td>
+            <td><input type="number" id="m1"></td>
+            <td><input type="number" id="e1"></td>
+            <td><input type="number" id="h1"></td>
+            <td><button type="button" onclick="myfunc(1)">Submit</button>
+              <!-- <button type="button" onclick="fail(1)"></button>--></td>
+            <td><div id="s1total"></div></td>
+            <!-- <td><div id="failed1"></div></td> -->
+            
+        </tr>
+        <tr>
+          <td><input type="text" id="s2"></td>
+          <td><input type="number" id="m2"></td>
+          <td><input type="number" id="e2"></td>
+          <td><input type="number" id="h2"></td>
+          <td><button type="button" onclick="myfunc(2)">Submit</button>
+            <!-- <button type="button" onclick="fail(2)"></button>  --></td>
+          
+          <td><div id="s2total"></div></td>
+          <!-- <td><div id="failed2"></div></td> -->
+      </tr>
+      <tr>
+        <td><input type="text" id="s3"></td>
+        <td><input type="number" id="m3"></td>
+        <td><input type="number" id="e3"></td>
+        <td><input type="number" id="h3"></td>
+        <td><button type="button" onclick="myfunc(3)">Submit</button>
+          <!-- <button type="button" onclick="fail(3)"></button> --></td>
+        <td><div id="s3total"></div></td>
+        <!-- <td><div id="failed3"></div></td> -->
+    </tr>
+    <tr>
+      <td><input type="text" id="s4"></td>
+      <td><input type="number" id="m4"></td>
+      <td><input type="number" id="e4"></td>
+      <td><input type="number" id="h4"></td>
+      <td><button type="button" onclick="myfunc(4)">Submit</button>
+        <!-- <button type="button" onclick="fail(4)"></button> -->
+      </td>
+      <td><div id="s4total"></div></td>
+      
+  </tr>
+  <tr>
+    <td><input type="text" id="s5"></td>
+    <td><input type="number" id="m5"></td>
+    <td><input type="number" id="e5"></td>
+    <td><input type="number" id="h5"></td>
+    <td><button type="button" onclick="myfunc(5)">Submit</button>
+      <!-- <button type="button" onclick="fail(5)"></button> --></td>
+    <td><div id="s5total"></div></td>
+    <!-- <td><div id="failed5"></div></td> -->
+</tr>
+        <!-- Additional student rows can be uncommented, or further rows can be added similarly -->
+    </table>
+
+    <script>
+      
+        function myfunc(studentNumber) {
+          let m = document.getElementById('m' + studentNumber).value;
+            let e = document.getElementById('e' + studentNumber).value;
+            let h = document.getElementById('h' + studentNumber).value;
+
+            let intM = parseInt(m);
+            let intE = parseInt(e);
+            let intH = parseInt(h);
+
+            let total = intM + intE + intH;
+
+            let grade;
+            let subfail;
+            if((intM>=35 && intM<=100) && (intE>=35 && intE<=100) && (intH>=35 && intH<=100) ) {
+              subfail="0";
+            }
+            else if(intM <35 && intE<35 && intH<35){
+               subfail="Math hin eng";
+            }
+            else if(intM <35 && intE<35 && intH>35){
+               subfail="Math  eng";
+            }
+            else if(intM <35 && intE>35 && intH<35){
+               subfail="Math hin ";
+            }
+            else if(intM >35 && intE<35 && intH<35){
+               subfail="hin eng";
+            }
+            else if(intM <35 && intE>35 && intH>35){
+               subfail="Math ";
+            }
+            else if(intM >35 && intE<35 && intH>35){
+               subfail=" eng";
+            }
+            else if(intM >35 && intE>35 && intH<35){
+               subfail="hin ";
+            }
+            if (total >= 270 && total <=300) {
+                grade = 'A';
+            } else if (total >=240 && total <270) {
+                grade = 'B';
+            } else if (total >= 200 && total <240) {
+                grade = 'C';
+            } else if(total<200 && total >=150) {
+                grade = 'D';
+            }
+            else if(total<150 && total >=100) {
+                grade = 'E';
+            }
+            else{
+              grade= 'F';
+            }
+
+
+            document.getElementById("s" + studentNumber + "total").innerHTML = `Total: ${total}, Grade: ${grade},failed-subjects:${subfail}`;
+        }
+        
+          
+    </script>
+</body>
+</html>
